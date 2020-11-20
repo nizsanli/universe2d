@@ -9,6 +9,8 @@ public class BoxScript : MonoBehaviour {
 	private bool left = false;
 	private bool right = false;
 
+    public float gravityAmount;
+
 	// Use this for initialization
 	void Start () {
 		Rigidbody2D body = gameObject.GetComponent<Rigidbody2D>();
@@ -27,10 +29,10 @@ public class BoxScript : MonoBehaviour {
 
 	void FixedUpdate()
 	{
-		Vector2 vecToCenter = new Vector2(transform.position.x, transform.position.y) - Vector2.zero;
+		Vector2 vecToCenter = new Vector2(transform.position.x, transform.position.y);
 		Vector2 vecToCenterNorm = vecToCenter.normalized;
 
-		Physics2D.gravity = vecToCenter * -1f;
+		Physics2D.gravity = -vecToCenter * gravityAmount;
 
 		Rigidbody2D body = gameObject.GetComponent<Rigidbody2D>();
 
